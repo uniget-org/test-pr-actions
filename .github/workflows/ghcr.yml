@@ -1,27 +1,17 @@
-name: Test
+name: ghcr
 
 on:
-  pull_request:
-    types:
-    - opened
-    - synchronize
-    - labeled
-    - reopened
+  push:
     paths:
-    - .github/workflows/*
-  pull_request_target:
-    types:
-    - opened
-    - synchronize
-    - labeled
-    - reopened
-    paths:
-    - tools/**
+    - Dockerfile
+
+permissions:
+  packages: write
 
 jobs:
 
   test:
-    name: Test
+    name: ghcr
     runs-on: ubuntu-22.04
     if: github.event_name == 'pull_request' || ( github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'lgtm') )
     steps:
@@ -45,11 +35,11 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: ghcr.io
-        username: uniget-bot
-        password: ${{ secrets.BOT_PACKAGES }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Test
-      env:
-        DOCKER_BUILDKIT: 1
-      run: |
-        echo "Test"
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: ghcr.io/${{ github.repository }}/test:${{ github.sha }}
