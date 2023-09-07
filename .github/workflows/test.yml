@@ -8,7 +8,7 @@ on:
     - labeled
     - reopened
     paths:
-    - .github/workflows/*
+    - .github/workflows/test.yml
   pull_request_target:
     types:
     - opened

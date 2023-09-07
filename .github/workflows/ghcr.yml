@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - Dockerfile
+    - .github/workflows/ghcr.yml
   workflow_dispatch:
 
 permissions:
@@ -14,7 +15,6 @@ jobs:
   test:
     name: ghcr
     runs-on: ubuntu-22.04
-    if: github.event_name == 'pull_request' || ( github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'lgtm') )
     steps:
 
     - name: Checkout code
