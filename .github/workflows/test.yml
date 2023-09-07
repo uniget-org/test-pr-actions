@@ -17,6 +17,7 @@ on:
     - reopened
     paths:
     - tools/**
+  workflow_dispatch:
 
 jobs:
 
