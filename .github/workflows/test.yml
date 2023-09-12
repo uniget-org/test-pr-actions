@@ -37,12 +37,16 @@ jobs:
         echo "Test"
 
   un-lgtm:
+    permissions:
+      issues: write
+      pull-requests: write
     name: Unlaben LGTM
     needs:
     - test
     runs-on: ubuntu-22.04
     steps:
 
+    # Use https://github.com/actions/github-script
     - name: Unlabel
       env:
         PR: ${{ github.event.pull_request.number }}
