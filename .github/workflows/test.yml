@@ -38,6 +38,8 @@ jobs:
 
   un-lgtm:
     name: Unlaben LGTM
+    needs:
+    - test
     runs-on: ubuntu-22.04
     steps:
 
