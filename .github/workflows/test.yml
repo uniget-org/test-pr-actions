@@ -37,18 +37,20 @@ jobs:
         echo "Test"
 
   un-lgtm:
+    name: Unlabel LGTM
+    if: github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'lgtm')
+    needs:
+    - test
     permissions:
       issues: write
       pull-requests: write
-    name: Unlaben LGTM
-    needs:
-    - test
     runs-on: ubuntu-22.04
     steps:
 
     # Use https://github.com/actions/github-script
     - name: Unlabel
       env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
         PR: ${{ github.event.pull_request.number }}
       run: |
         curl -s -v -L \
