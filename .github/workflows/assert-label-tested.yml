@@ -5,14 +5,6 @@ on:
     types:
     - labeled
     - reopened
-    paths:
-    - .github/workflows/test.yml
-  pull_request_target:
-    types:
-    - labeled
-    - reopened
-    paths:
-    - tools/**
   workflow_dispatch:
 
 jobs:
@@ -25,5 +17,5 @@ jobs:
     - name: Test
       if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
       run: |
-        echo "The PR has not been tested"
+        echo "The PR is missing label tested"
         exit 1
