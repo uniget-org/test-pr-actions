@@ -31,11 +31,12 @@ jobs:
             "https://api.github.com/repos/uniget-org/test-pr-actions/pulls?head=${WORKFLOW_RUN_HEAD_BRANCH}" \
             | jq --raw-output '.[].number'
         )"
+        echo "Found PR ${PR}"
 
         if test -z "${PR}"; then
             echo "ERROR: Unable to find PR"
             exit 1
         fi
 
-        echo "The PR is missing label tested"
+        echo "The PR ${PR} is missing label tested"
         exit 1
