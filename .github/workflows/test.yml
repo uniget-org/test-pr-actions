@@ -28,7 +28,7 @@ jobs:
 
     # Use https://github.com/actions/github-script
     - name: Add label tested
-      if: github.event_name == 'pull_request_target' && !contains(github.event.pull_request.labels.*.name, 'tested')
+      if: "!contains(github.event.pull_request.labels.*.name, 'tested')"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR: ${{ github.event.pull_request.number }}
