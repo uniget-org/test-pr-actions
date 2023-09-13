@@ -17,8 +17,10 @@ jobs:
 
     - name: Test
       #if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
+      env:
+        CONTEXT_GITHUB: ${{ toJson(github) }}
       run: |
-        echo "${{ toJson(github) }}"
+        echo "${CONTEXT_GITHUB}"
 
         if test -z "${PR}"; then
             echo "ERROR: Unable to find PR"
