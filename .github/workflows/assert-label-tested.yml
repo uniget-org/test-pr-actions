@@ -18,9 +18,19 @@ jobs:
     - name: Test
       #if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
       env:
-        CONTEXT_GITHUB: ${{ toJson(github) }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        echo "${CONTEXT_GITHUB}"
+        WORKFLOW_RUN_URL="${{ github.event.workflow_run.url }}"
+        echo "Triggering workflow run: ${WORKFLOW_RUN_URL}"
+
+        WORKFLOW_RUN_HEAD_BRANCH="${{ github.event.workflow_run.head_branch }}"
+        echo "Workflow run head branch: ${WORKFLOW_RUN_HEAD_BRANCH}"
+
+        PR="$(
+            curl -sfH "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/uniget-org/test-pr-actions/pulls?head=${WORKFLOW_RUN_HEAD_BRANCH}" \
+            | jq --raw-output '.number'
+        )"
 
         if test -z "${PR}"; then
             echo "ERROR: Unable to find PR"
