@@ -50,7 +50,7 @@ jobs:
     # Use https://github.com/actions/github-script
     - name: Unlabel
       env:
-        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR: ${{ github.event.pull_request.number }}
       run: |
         curl -s -v -L \
