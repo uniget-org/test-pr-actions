@@ -23,7 +23,7 @@ jobs:
     steps:
 
     - name: Test
-      if: "!contains(github.event.pull_request.labels.*.name, 'tested')"
+      if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
       run: |
         echo "The PR has not been tested"
         exit 1
