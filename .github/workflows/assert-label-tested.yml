@@ -1,9 +1,6 @@
 name: Assert label tested
 
 on:
-  pull_request:
-    types:
-    - reopened
   workflow_run:
     workflows:
     - Test
