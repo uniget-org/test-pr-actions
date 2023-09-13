@@ -16,7 +16,12 @@ jobs:
     steps:
 
     - name: Test
-      if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
+      #if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
       run: |
+        if test -z "${PR}"; then
+            echo "ERROR: Unable to find PR"
+            exit 1
+        fi
+
         echo "The PR is missing label tested"
         exit 1
