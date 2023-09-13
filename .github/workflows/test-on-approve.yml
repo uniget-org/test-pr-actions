@@ -1,0 +1,19 @@
+name: Test on approve
+
+on:
+  pull_request_review:
+    types:
+    - submitted
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    if: github.event.review.state == 'approved'
+    steps:
+
+    - name: Test
+      run: |
+        echo "Test"

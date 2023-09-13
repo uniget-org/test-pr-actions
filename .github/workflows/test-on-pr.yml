@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  pull_request:
+    types:
+    - opened
+    - synchronize
+    - labeled
+    - reopened
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Test
+      run: |
+        echo "Test"
