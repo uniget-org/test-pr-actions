@@ -1,4 +1,4 @@
-name: Test
+name: Relabel
 
 on:
   pull_request:
