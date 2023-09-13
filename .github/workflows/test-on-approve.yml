@@ -15,5 +15,7 @@ jobs:
     steps:
 
     - name: Test
+      env:
+        PR: ${{ github.event.pull_request.number }}
       run: |
-        echo "Test"
+        echo "Test PR ${PR}"

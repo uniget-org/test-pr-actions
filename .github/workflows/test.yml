@@ -5,7 +5,6 @@ on:
     types:
     - opened
     - synchronize
-    - labeled
     - reopened
     paths:
     - .github/workflows/test.yml
@@ -33,6 +32,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR: ${{ github.event.pull_request.number }}
       run: |
+        echo "Add label tested to PR ${PR}"
         curl -s -v -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
