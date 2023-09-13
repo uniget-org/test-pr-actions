@@ -3,16 +3,12 @@ name: Assert label tested
 on:
   pull_request:
     types:
-    - opened
-    - synchronize
     - labeled
     - reopened
     paths:
     - .github/workflows/test.yml
   pull_request_target:
     types:
-    - opened
-    - synchronize
     - labeled
     - reopened
     paths:
