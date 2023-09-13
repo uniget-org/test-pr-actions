@@ -3,8 +3,12 @@ name: Assert label tested
 on:
   pull_request:
     types:
-    - labeled
     - reopened
+  workflow_run:
+    workflows:
+    - Test
+    types:
+    - completed
   workflow_dispatch:
 
 jobs:
