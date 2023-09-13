@@ -15,17 +15,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-    - name: GitHub Script
-      uses: actions/github-script@v5
-      with:
-        script: |
-          const pr = github.event.workflow_run.conclusion === 'success' ? github.event.workflow_run.head_branch : github.event.pull_request.head.ref;
-          console.log(`PR: ${pr}`);
-          core.setOutput('pr', pr);
-
     - name: Test
       #if: "!contains(github.event.pull_request_target.labels.*.name, 'tested')"
       run: |
+        echo "${{ toJson(github) }}"
+
         if test -z "${PR}"; then
             echo "ERROR: Unable to find PR"
             exit 1
