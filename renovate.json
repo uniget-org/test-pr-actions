@@ -31,9 +31,9 @@
         ]
     },
     {
-      "datasourceTemplate": "custom.docker-compose-v1",
+      "datasourceTemplate": "github-tags",
       "depNameTemplate": "docker/compose",
-      "extractVersionTemplate": "regex:^refs/tags/(?<version>.+?)$",
+      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+\\.\\d+?)$",
       "fileMatch": [
         "^tools/docker-compose-v1/manifest.yaml$"
       ],
