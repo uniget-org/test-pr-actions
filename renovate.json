@@ -24,18 +24,6 @@
           "version: \"?(?<currentValue>.*?)\"?\\n"
         ],
         "versioningTemplate": "{{{ replace '_' '.' version }}}"
-    },
-    {
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "containers/crun",
-      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+(\\.\\d+)??)$",
-      "fileMatch": [
-        "^tools/crun/manifest.yaml$"
-      ],
-      "matchStrings": [
-        "version: \"?(?<currentValue>.*?)\"?\\n"
-      ],
-      "versioningTemplate": "loose"
     }
   ]
 }
