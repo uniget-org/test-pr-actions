@@ -8,8 +8,11 @@ jobs:
   test:
     name: Test
     strategy:
+      fail-fast: false
       matrix:
-        LETTER: [ "a", "b" ]
+        LETTER:
+        - "a"
+        - "b"
     runs-on: ubuntu-22.04
     steps:
 
@@ -23,8 +26,7 @@ jobs:
       run: |
         printenv | sort
 
-    - name: Collect
-      id: collect
+    - name: Process tools
       run: |
         echo "Filter: ${LETTER}"
         helper/usr/local/bin/regctl manifest get ghcr.io/uniget-org/tools/metadata:main --format raw-body \
