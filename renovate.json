@@ -14,7 +14,7 @@
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
         ],
-        "versioningTemplate": "loose"
+        "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
     },
     {
       "datasourceTemplate": "github-releases",
