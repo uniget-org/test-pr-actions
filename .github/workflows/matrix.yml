@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         LETTER: [ "a", "b" ]
+        QUEUE: [ "a1 b2 a3 b4" ]
     steps:
 
     - name: Test
