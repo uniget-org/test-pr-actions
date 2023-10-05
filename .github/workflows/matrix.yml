@@ -11,9 +11,21 @@ jobs:
     strategy:
       matrix:
         LETTER: [ "a", "b" ]
-        QUEUE: [ "a1 b2 a3 b4" ]
     steps:
 
-    - name: Test
+    - name: Install uniget
+      uses: uniget-org/uniget-action@main
+      with:
+        prefix: helper
+        tools: gojq regclient
+
+    - name: Collect
+      id: collect
       run: |
-        echo "Test: ${LETTER}, ${QUEUE}."
+        echo "Filter: ${LETTER}"
+        helper/usr/local/bin/regctl manifest get ghcr.io/uniget-org/tools/metadata:main --format raw-body \
+        | helper/usr/local/bin/jq --raw-output '.layers[0].digest' \
+        | xargs -I{} \
+            helper/usr/local/bin/regctl blob get ghcr.io/uniget-org/tools/metadata:main {} \
+        | tar --extract --gzip --to-stdout \
+        | helper/usr/local/bin/jq --raw-output --arg prefix "${LETTER}" '.tools[] | select(.name | startswith($prefix)) | "\(.name):\(.version)"'
