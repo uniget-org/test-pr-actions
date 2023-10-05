@@ -7,7 +7,7 @@
     "curl": {
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/curl/curl/releases",
       "format": "json",
-      "transformTemplate": [
+      "transformTemplates": [
         "{\"releases\": [ $[].{\"version\": name, \"releaseTimestamp\": created_at} ]}"
       ]
     }
