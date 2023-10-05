@@ -73,7 +73,7 @@
     {
       "datasourceTemplate": "git-tags",
       "depNameTemplate": "git://repo.or.cz/socat.git",
-      "extractVersionTemplate": "^tag-(<version>\\d+\\.\\d+\\.\\d+(\\.\\d+)?)$",
+      "extractVersionTemplate": "^tag-(?<version>\\d+\\.\\d+\\.\\d+(\\.\\d+)??)$",
       "fileMatch": [
         "^tools/socat/manifest.yaml$"
       ],
