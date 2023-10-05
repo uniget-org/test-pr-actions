@@ -7,10 +7,10 @@ jobs:
 
   test:
     name: Test
-    runs-on: ubuntu-22.04
     strategy:
       matrix:
         LETTER: [ "a", "b" ]
+    runs-on: ubuntu-22.04
     steps:
 
     - name: Install uniget
@@ -18,6 +18,10 @@ jobs:
       with:
         prefix: helper
         tools: gojq regclient
+
+    - name: Debug
+      run: |
+        printenv | sort
 
     - name: Collect
       id: collect
