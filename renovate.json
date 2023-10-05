@@ -8,7 +8,14 @@
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/curl/curl/releases",
       "format": "json",
       "transformTemplates": [
-        "{\"releases\": [ $[].{\"version\": name, \"releaseTimestamp\": created_at} ]}"
+        "{ \"releases\": [ $[].{ \"version\": name, \"releaseTimestamp\": created_at } ] }"
+      ]
+    },
+    "docker-compose-v1": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/docker/compose/git/matching-refs/tags/1.",
+      "format": "json",
+      "transformTemplates": [
+        "{ \"releases\": [ $[].{ \"version\": ref } ] }"
       ]
     }
   },
@@ -26,7 +33,7 @@
     {
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "docker/compose",
-      "extractVersionTemplate": "regex:^(?<version>\\d+\\.\\d+\\.\\d+)$",
+      "extractVersionTemplate": "regex:^(?<version>\\d+\\.\\d+\\.\\d+?)$",
       "fileMatch": [
         "^tools/docker-compose-v1/manifest.yaml$"
       ],
@@ -44,7 +51,7 @@
       "matchStrings": [
         "version: \"?(?<currentValue>.*?)\"?\\n"
       ],
-      "versioningTemplate": "regex:^(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)$"
+      "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
     },
     {
       "datasourceTemplate": "pypi",
