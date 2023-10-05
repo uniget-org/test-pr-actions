@@ -7,18 +7,19 @@
     {
         "datasourceTemplate": "github-releases",
         "depNameTemplate": "curl/curl",
-        "extractVersionTemplate": "^curl-(?<version>\\d+_\\d+_\\d+?)$",
+        "extractVersionTemplate": "regex:^curl-(?<version>\\d+_\\d+_\\d+)$",
         "fileMatch": [
           "^tools/curl/manifest.yaml$"
         ],
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
-        ]
+        ],
+        "versioningTemplate": "regex:^(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)$"
     },
     {
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "containers/crun",
-      "extractVersionTemplate": "regex:^\\d+\\.\\d+(\\.\\d+)?$",
+      "extractVersionTemplate": "regex:^(?<version>\\d+\\.\\d+(\\.\\d+)?)$",
       "fileMatch": [
         "^tools/crun/manifest.yaml$"
       ],
