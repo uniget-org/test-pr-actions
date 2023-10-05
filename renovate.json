@@ -48,7 +48,7 @@
       "versioningTemplate": "loose"
     },
     {
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "github-tags",
       "depNameTemplate": "fabioz/mu-repo",
       "extractVersionTemplate": "^mu_repo_(?<version>.+?)$",
       "fileMatch": [
