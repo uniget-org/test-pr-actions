@@ -50,6 +50,17 @@
         "version: \"?(?<currentValue>.*?)\"?\\n"
       ],
       "versioningTemplate": "loose"
+    },
+    {
+      "datasourceTemplate": "gitlab-tags",
+      "depNameTemplate": "https://gitlab.freedesktop.org/xdg/xdg-utils",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+(\\.\\d+)??)$",
+      "fileMatch": [
+        "^tools/xdg-utils/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ]
     }
   ]
 }
