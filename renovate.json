@@ -13,7 +13,7 @@
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
         ],
-        "versioningTemplate": "loose"
+        "versioningTemplate": "regex:^curl-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
     },
     {
       "datasourceTemplate": "github-releases",
