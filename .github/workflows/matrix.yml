@@ -28,10 +28,10 @@ jobs:
 
     - name: Process tools
       run: |
-        echo "Filter: ${LETTER}"
+        echo "Filter: ${{ matrix.LETTER }}"
         helper/usr/local/bin/regctl manifest get ghcr.io/uniget-org/tools/metadata:main --format raw-body \
         | helper/usr/local/bin/jq --raw-output '.layers[0].digest' \
         | xargs -I{} \
             helper/usr/local/bin/regctl blob get ghcr.io/uniget-org/tools/metadata:main {} \
         | tar --extract --gzip --to-stdout \
-        | helper/usr/local/bin/jq --raw-output --arg prefix "${LETTER}" '.tools[] | select(.name | startswith($prefix)) | "\(.name):\(.version)"'
+        | helper/usr/local/bin/jq --raw-output --arg prefix "${{ matrix.LETTER }}" '.tools[] | select(.name | startswith($prefix)) | "\(.name):\(.version)"'
