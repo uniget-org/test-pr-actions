@@ -33,7 +33,7 @@
     {
       "datasourceTemplate": "github-tags",
       "depNameTemplate": "docker/compose",
-      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+\\.\\d+?)$",
+      "extractVersionTemplate": "^(?<version>1\\.\\d+\\.\\d+?)$",
       "fileMatch": [
         "^tools/docker-compose-v1/manifest.yaml$"
       ],
