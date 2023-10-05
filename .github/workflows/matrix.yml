@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
+        LETTER: [ "a", "b" ]
         include:
-        - LETTER: a
+        - LETTER: "a"
           QUEUE: [ "1", "2", "3" ]
-        - LETTER: b
+        - LETTER: "b"
           QUEUE: [ "4", "5", "6" ]
     steps:
 
