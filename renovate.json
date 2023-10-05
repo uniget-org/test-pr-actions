@@ -23,7 +23,7 @@
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
         ],
-        "versioningTemplate": "regex:^(curl-)?(?<major>\\d+?)[_.](?<minor>\\d+?)[_.](?<patch>\\d+?)$"
+        "versioningTemplate": "{{{ replace '_' '.' version }}}"
     },
     {
       "datasourceTemplate": "github-releases",
