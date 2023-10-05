@@ -54,7 +54,7 @@
     {
       "datasourceTemplate": "gitlab-tags",
       "depNameTemplate": "xdg/xdg-utils",
-      "registryUrlTemplate": "https://gitlab.freedesktop.org/api/v4/projects/xdg%2fxdg-utils/repository/tags?per_page=100",
+      "packageNameTemplate": "https://gitlab.freedesktop.org/api/v4/projects/xdg%2fxdg-utils/repository/tags?per_page=100",
       "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+(\\.\\d+)??)$",
       "fileMatch": [
         "^tools/xdg-utils/manifest.yaml$"
