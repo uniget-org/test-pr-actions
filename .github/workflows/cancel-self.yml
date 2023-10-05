@@ -1,0 +1,29 @@
+name: Cancel self
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Debug context github
+      env:
+        CONTEXT_GITHUB: ${{ toJson(github) }}
+      run: |
+        echo "${CONTEXT_GITHUB}"
+
+    - name: Debug env
+      run: |
+        printenv | sort
+
+    - name: Test
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        curl --silent --show-error --fail --header "Authorization: token ${GITHUB_TOKEN}" \
+            --request POST \
+            --url "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/cancel"
