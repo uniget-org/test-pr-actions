@@ -3,18 +3,25 @@
   "enabledManagers": [
     "regex"
   ],
+  "customDatasources": {
+    "curl": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/curl/curl/releases",
+      "format": "json",
+      "transformTemplate": [
+        "{\"releases\": [ $[].{\"version\": name, \"releaseTimestamp\": created_at} ]}"
+      ]
+    }
+  },
   "regexManagers": [
     {
-        "datasourceTemplate": "github-releases",
+        "datasourceTemplate": "custom.curl",
         "depNameTemplate": "curl/curl",
-        "extractVersionTemplate": "^curl-(?<version>.+?)$",
         "fileMatch": [
           "^tools/curl/manifest.yaml$"
         ],
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
-        ],
-        "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
+        ]
     },
     {
       "datasourceTemplate": "github-releases",
