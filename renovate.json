@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "regexManagers": [
+    {
+        "datasourceTemplate": "github-releases",
+        "depNameTemplate": "curl/curl",
+        "extractVersionTemplate": "^curl-(?<version>\\d+_\\d+_\\d+?)$",
+        "fileMatch": [
+          "^tools/curl/manifest.yaml$"
+        ],
+        "matchStrings": [
+          "version: \"?(?<currentValue>.*?)\"?\\n"
+        ],
+        "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
+    }
+  ]
+}
