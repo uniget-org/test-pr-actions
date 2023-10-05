@@ -1,5 +1,5 @@
 name: curl
-version: "7_87_0"
+version: "curl-7_87_0"
 check: ${binary} --version | grep ^curl | cut -d' ' -f2
 platforms:
   - linux/amd64

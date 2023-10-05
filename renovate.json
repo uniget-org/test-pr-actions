@@ -7,13 +7,13 @@
     {
         "datasourceTemplate": "github-releases",
         "depNameTemplate": "curl/curl",
-        "extractVersionTemplate": "regex:^curl-(?<version>\\d+_\\d+_\\d+)$",
         "fileMatch": [
           "^tools/curl/manifest.yaml$"
         ],
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
-        ]
+        ],
+        "versioningTemplate": "loose"
     },
     {
       "datasourceTemplate": "github-releases",
