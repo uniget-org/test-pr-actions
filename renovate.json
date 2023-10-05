@@ -14,14 +14,16 @@
   },
   "regexManagers": [
     {
-        "datasourceTemplate": "custom.curl",
+        "datasourceTemplate": "github-releases",
         "depNameTemplate": "curl/curl",
+        "extractVersionTemplate": "^curl-(?<version>.+?)$",
         "fileMatch": [
           "^tools/curl/manifest.yaml$"
         ],
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
-        ]
+        ],
+        "versioningTemplate": "regex:^(curl-)?(?<major>\\d+?)[_.](?<minor>\\d+?)[_.](?<patch>\\d+?)$"
     },
     {
       "datasourceTemplate": "github-releases",
