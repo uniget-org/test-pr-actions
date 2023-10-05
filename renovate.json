@@ -8,7 +8,14 @@
       "defaultRegistryUrlTemplate": "https://api.github.com/repos/curl/curl/releases",
       "format": "json",
       "transformTemplates": [
-        "{ \"releases\": [ $[].{ \"version\": name, \"releaseTimestamp\": created_at } ] }"
+        "{ \"releases\": [ $[].{ \"version\": $replace( $substring( tag_name, 5 ), '_', '.' ) } ] }"
+      ]
+    },
+    "mu-repo": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/fabioz/mu-repo/git/matching-refs/tags/mu_repo_",
+      "format": "json",
+      "transformTemplates": [
+        "{ \"releases\": [ $[].{ \"version\": $replace( $substring( ref, 18 ), '_', '.') } ] }"
       ]
     }
   },
@@ -24,16 +31,14 @@
         ]
     },
     {
-      "datasourceTemplate": "github-tags",
+      "datasourceTemplate": "custom.mu-repo",
       "depNameTemplate": "fabioz/mu-repo",
-      "extractVersionTemplate": "^mu_repo_(?<version>.+?)$",
       "fileMatch": [
         "^tools/mu-repo/manifest.yaml$"
       ],
       "matchStrings": [
         "version: \"?(?<currentValue>.*?)\"?\\n"
-      ],
-      "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
+      ]
     },
     {
       "datasourceTemplate": "pypi",
