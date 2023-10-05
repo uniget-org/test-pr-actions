@@ -14,12 +14,12 @@
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
         ],
-        "versioningTemplate": "regex:^(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)$"
+        "versioningTemplate": "regex:^(?<major>\\d+?)_(?<minor>\\d+?)_(?<patch>\\d+?)$"
     },
     {
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "containers/crun",
-      "extractVersionTemplate": "regex:^(?<version>\\d+\\.\\d+(\\.\\d+)?)$",
+      "extractVersionTemplate": "^(?<version>\\d+\\.\\d+(\\.\\d+)??)$",
       "fileMatch": [
         "^tools/crun/manifest.yaml$"
       ],
