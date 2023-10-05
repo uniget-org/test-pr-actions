@@ -14,16 +14,83 @@
   },
   "regexManagers": [
     {
-        "datasourceTemplate": "github-releases",
+        "datasourceTemplate": "custom.curl",
         "depNameTemplate": "curl/curl",
-        "extractVersionTemplate": "^curl-(?<version>.+?)$",
         "fileMatch": [
           "^tools/curl/manifest.yaml$"
         ],
         "matchStrings": [
           "version: \"?(?<currentValue>.*?)\"?\\n"
-        ],
-        "versioningTemplate": "{{{ replace '_' '.' version }}}"
+        ]
+    },
+    {
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "docker/compose",
+      "extractVersionTemplate": "regex:^(?<version>1\\.\\d+\\.\\d+)$",
+      "fileMatch": [
+        "^tools/docker-compose-v1/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ]
+    },
+    {
+      "datasourceTemplate": "git-tags",
+      "depNameTemplate": "forgejo/forgejo",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+\\.\\d+(-\\d+)?)$",
+      "fileMatch": [
+        "^tools/forgejo/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ],
+      "packageNameTemplate": "https://codeberg.org/forgejo/forgejo",
+      "versioningTemplate": "loose"
+    },
+    {
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "fabioz/mu-repo",
+      "extractVersionTemplate": "^mu_repo_(?<version>.+?)$",
+      "fileMatch": [
+        "^tools/mu-repo/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ],
+      "versioningTemplate": "regex:^(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)$"
+    },
+    {
+      "datasourceTemplate": "git-tags",
+      "depNameTemplate": "git://g.blicky.net/ncdu.git",
+      "extractVersionTemplate": "^v(?<version>\\d+\\.\\d+\\.\\d+?)$",
+      "fileMatch": [
+        "^tools/ncdu/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ]
+    },
+    {
+      "datasourceTemplate": "git-tags",
+      "depNameTemplate": "git://repo.or.cz/socat.git",
+      "extractVersionTemplate": "^tag-(<version>\\d+\\.\\d+\\.\\d+(\\.\\d+)?)$",
+      "fileMatch": [
+        "^tools/socat/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ],
+      "versioningTemplate": "loose"
+    },
+    {
+      "datasourceTemplate": "pypi",
+      "depNameTemplate": "wordcloud",
+      "fileMatch": [
+        "^tools/wordcloud/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ]
     }
   ]
 }
