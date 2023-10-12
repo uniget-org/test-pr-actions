@@ -8,6 +8,9 @@ jobs:
 
   sign:
     name: Sign
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-22.04
     steps:
 
