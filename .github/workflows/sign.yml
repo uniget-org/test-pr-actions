@@ -1,0 +1,24 @@
+name: Sign
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+
+  sign:
+    name: Sign
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install cosign
+      uses: sigstore/cosign-installer@v3.1.2
+
+    - name: Test
+      env:
+        COSIGN_EXPERIMENTAL: 1
+      run: |
+        cosign sign-blob /etc/hostname --output-certificate foo.pem --output-signature foo.sig --yes --verbose
