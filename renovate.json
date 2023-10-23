@@ -34,7 +34,7 @@
         "docker"
       ],
       "schedule": [
-        "only on Tuesday"
+        "on Tuesday"
       ]
     }
   ]
