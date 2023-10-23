@@ -15,6 +15,27 @@
       "matchStrings": [
         "version: \"?(?<currentValue>.*?)\"?\\n"
       ]
+    },
+    {
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "moby/moby",
+      "extractVersionTemplate": "^v(?<version>.+?)$",
+      "fileMatch": [
+        "^tools/docker/manifest.yaml$"
+      ],
+      "matchStrings": [
+        "version: \"?(?<currentValue>.*?)\"?\\n"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames":[
+        "docker"
+      ],
+      "schedule": [
+        "only on Tuesday"
+      ]
     }
   ]
 }
