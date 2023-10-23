@@ -3,6 +3,7 @@
   "enabledManagers": [
     "regex"
   ],
+  "recreateWhen": "always",
   "regexManagers": [
     {
       "datasourceTemplate": "gitlab-tags",
@@ -31,7 +32,7 @@
   "packageRules": [
     {
       "matchPackageNames":[
-        "docker"
+        "moby/moby"
       ],
       "schedule": [
         "on Tuesday"
